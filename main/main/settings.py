@@ -23,10 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-zug#56mcagw#%+^vc!(9!=*2zojj3235$8_@p0r)8$8d%@a12!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.71.110", "verkauf.solscheid.it"]
 
+CSRF_TRUSTED_ORIGINS = ["http://verkauf.solscheid.it", "https://verkauf.solscheid.it"]
 
 # Application definition
 
