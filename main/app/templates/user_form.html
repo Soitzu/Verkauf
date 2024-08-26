@@ -28,8 +28,14 @@
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
+        max-width: 800px;
         width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .form-container, .price-list {
+        width: 48%;
     }
     
     h2 {
@@ -70,43 +76,82 @@
     button:hover {
         background-color: #0056b3;
     }
+
+    .price-list {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .price-list h3 {
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
+
+    .price-list ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .price-list ul li {
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    .price-list ul li span {
+        font-weight: bold;
+    }
 </style>
 <body>
     <div class="container">
-        <h2>Hardware Verkauf!</h2>
+        <div class="form-container">
+            <h2>Hardware Verkauf!</h2>
 
-        <form id="hardware_form" action="" method="post" onsubmit="return validateForm()">
-            {% csrf_token %}
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        
-            <label>Hardware:</label>
-            <div class="select-wrapper">
-                <select id="hardware_select" name="model" required onchange="updatePrice()">
-                    <option value="" disabled selected>Bitte auswählen ...</option>
-                    <option value="Notebook - Acer" data-price="500">Notebook - Acer</option>
-                    <option value="Tablet - Samsung T585" data-price="200">Tablet - Samsung T585</option>
-                    <option value="Tablet - Samsung T595" data-price="250">Tablet - Samsung T595</option>
-                    <option value="Tablet - Samsung T515" data-price="220">Tablet - Samsung T515</option>
-                    <option value="Tablet - Blackview Tab 8" data-price="150">Tablet - Blackview Tab 8</option>
-                    <option value="PC - TBD" data-price="800">PC - TBD</option>
-                </select>
-            </div>
-
-            <label for="price">Preis:</label>
-            <input type="text" id="price" name="price" value="0" readonly>
+            <form id="hardware_form" action="" method="post" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
             
-            <button id="submit" type="submit">Absenden</button>
-        </form>
+                <label>Hardware:</label>
+                <div class="select-wrapper">
+                    <select id="hardware_select" name="model" required onchange="updatePrice()">
+                        <option value="" disabled selected>Bitte auswählen ...</option>
+                        <option value="Notebook - Acer" data-price="500">Notebook - Acer</option>
+                        <option value="Tablet - Samsung T585" data-price="200">Tablet - Samsung T585</option>
+                        <option value="Tablet - Samsung T595" data-price="250">Tablet - Samsung T595</option>
+                        <option value="Tablet - Samsung T515" data-price="220">Tablet - Samsung T515</option>
+                        <option value="Tablet - Blackview Tab 8" data-price="150">Tablet - Blackview Tab 8</option>
+                        <option value="PC - TBD" data-price="800">PC - TBD</option>
+                    </select>
+                </div>
+
+                <label for="price">Preis:</label>
+                <input type="text" id="price" name="price" value="0" readonly>
+                
+                <button id="submit" type="submit">Absenden</button>
+            </form>
+        </div>
+
+        <div class="price-list">
+            <h3>Preisliste</h3>
+            <ul>
+                <li>Notebook - Acer: <span>500 Euro</span></li>
+                <li>Tablet - Samsung T585: <span>200 Euro</span></li>
+                <li>Tablet - Samsung T595: <span>250 Euro</span></li>
+                <li>Tablet - Samsung T515: <span>220 Euro</span></li>
+                <li>Tablet - Blackview Tab 8: <span>150 Euro</span></li>
+                <li>PC - TBD: <span>800 Euro</span></li>
+            </ul>
+        </div>
     </div>
     <script>
         function updatePrice() {
-
             const select = document.getElementById('hardware_select');
             const selectedOption = select.options[select.selectedIndex];
             const price = selectedOption.getAttribute('data-price');
             document.getElementById('price').value = price;
-
         }
     </script>
 </body>
