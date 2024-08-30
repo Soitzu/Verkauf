@@ -25,9 +25,9 @@ SECRET_KEY = 'django-insecure-zug#56mcagw#%+^vc!(9!=*2zojj3235$8_@p0r)8$8d%@a12!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1", "192.168.71.110", "verkauf.solscheid.it"]
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.71.110", "verkauf.solscheid.it", "webcontainer.solscheid.it"]
 
-CSRF_TRUSTED_ORIGINS = ["http://verkauf.solscheid.it", "https://verkauf.solscheid.it"]
+CSRF_TRUSTED_ORIGINS = ["http://verkauf.solscheid.it", "https://verkauf.solscheid.it", "https://webcontainer.solscheid.it"]
 
 # Application definition
 
