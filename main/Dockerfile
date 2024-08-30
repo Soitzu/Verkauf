@@ -16,4 +16,4 @@ RUN python3 manage.py migrate
 
 RUN apt-get update && apt-get clean
 
-CMD ["gunicorn", "main.wsgi:application", "--bind", "0.0.0.0:8083"]
+CMD ["gunicorn", "main.wsgi:application", "--bind", "0.0.0.0:8080"]
