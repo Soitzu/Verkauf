@@ -10,11 +10,13 @@ def user_form(request):
         name = request.POST.get('name')
         model = request.POST.get('model')
         price = request.POST.get('price')
+        editor = request.POST.get('editor')
 
         hardware = Hardware(
             name=name,
             model=model,
             price=price,
+            editor=editor,
         )
         hardware.save()
         return render(request, 'user_form.html')
@@ -42,14 +44,14 @@ def download_excel(request):
     )
 
     writer = csv.writer(response)
-    writer.writerow(['Name', 'Modell', 'Preis', 'Datum'])
+    writer.writerow(['Name', 'Modell', 'Preis', 'Datum', 'Uhrzeit', 'Bearbeiter'])
 
-    employees = Hardware.objects.all().values_list('name', 'model', 'price', 'date')
+    employees = Hardware.objects.all().values_list('name', 'model', 'price', 'date', 'time', 'editor')
     for employee in employees:
-        name, model, price, date = employee
+        name, model, price, date, time, editor  = employee
 
         price = int(price)
         date = date.strftime('%d.%m.%Y')
-        writer.writerow([name, model, price, date])
+        writer.writerow([name, model, price, date, time, editor])
 
     return response

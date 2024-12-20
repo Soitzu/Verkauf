@@ -96,6 +96,8 @@
                         <th>Modell</th>
                         <th>Preis</th>
                         <th>Datum</th>
+                        <th>Uhrzeit</th>
+                        <th>Bearbeiter</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -105,6 +107,8 @@
                         <td>{{ employee.model }}</td>
                         <td>{{ employee.price |floatformat:"0" }} Euro</td>
                         <td>{{ employee.date }}</td>
+                        <td>{{ employee.time }}</td>
+                        <td>{{ employee.editor }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
